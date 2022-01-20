@@ -6,7 +6,7 @@
 /*   By: mbascuna <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 12:26:11 by mbascuna          #+#    #+#             */
-/*   Updated: 2022/01/20 12:55:22 by mbascuna         ###   ########.fr       */
+/*   Updated: 2022/01/20 16:32:44 by mbascuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,28 @@ void ft_error(char *msg)
 	exit(EXIT_FAILURE);
 }
 
-/*int	*push_swap(int *list_a, int j)
+t_liste	*push_swap(t_liste *list)
 {
-	int middle;
+	t_elemt *bottom;
+	t_elemt *middle;
 
-	middle = j / 2;
-	if (list_a[0] > list_a[middle] 
-			&& list_a[middle] < list_a[j]
-			&& list_a[j] < list_a[0])
-		ft_r(list_a, j);
-	else if (list_a[0] < list_a[middle] 
-			&& list_a[middle] > list_a[j]
-			&& list_a[j] < list_a[0])
-		ft_rr(list_a);
+	bottom = ft_lst_last(list->a);
+	middle = list->a->next;
+	if(list->a->val > middle->val
+			&& middle->val < bottom->val
+			&& bottom->val < list->a->val)
+		ft_ra(list);
+	else if (list->a->val < middle->val 
+			&& middle->val > bottom->val
+			&& bottom->val < list->a->val)
+		ft_rra(list);
 	else 
-		ft_s(list_a);
-	return (list_a);
-}*/
+		ft_sa(list);
+	//si pas sort > recursive de push swap
+	if (!ft_check_sorted(list))
+		push_swap(list);
+	return (list);
+}
 
 t_liste *ft_list_init(void *av)
 {
@@ -66,6 +71,7 @@ void ft_lst_add_front(t_liste *list, char *val)
 }
 
 void ft_add_back(t_liste *list, char *val)
+{
     t_elemt *new; 
     t_elemt *last; 
 		
@@ -98,14 +104,15 @@ int main(int ac, char **av)
 //	list_b = ft_list_init("0"); 
 	while (av[++i])	
 		ft_add_back(list_a, av[i]);
-//	push_swap(&list_a, j);
 	elemt = list_a->a;
 	while (elemt != NULL)
 	{
 		printf("%d \n", elemt->val);
 		elemt = elemt->next;
 	}
-	ft_sa(list_a);
+//	ft_sa(list_a);
+	printf("--------------\n");
+	push_swap(list_a);
 	elemt = list_a->a;
 	printf("--------------\n");
 	while (elemt != NULL)

@@ -6,7 +6,7 @@
 /*   By: mbascuna <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 12:30:05 by mbascuna          #+#    #+#             */
-/*   Updated: 2022/01/20 11:16:11 by mbascuna         ###   ########.fr       */
+/*   Updated: 2022/01/20 16:09:54 by mbascuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ t_elemt	*ft_lst_last(t_elemt *lst);
 void	ft_sa(t_liste *list);
 void		ft_rra(t_liste *list);
 void		ft_ra(t_liste *list);
+int	ft_check_sorted(t_liste *list);
 int main(int ac, char **av);
 
 # endif

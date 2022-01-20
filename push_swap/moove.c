@@ -6,7 +6,7 @@
 /*   By: mbascuna <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 11:13:35 by mbascuna          #+#    #+#             */
-/*   Updated: 2022/01/20 11:15:33 by mbascuna         ###   ########.fr       */
+/*   Updated: 2022/01/20 16:12:11 by mbascuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void		ft_ra(t_liste *list)
 		list->a->next = last;
 		list->a = top;
 	}
+	write(1, "ra\n", 3);
 }
 
 void		ft_rra(t_liste *list)
@@ -55,6 +56,7 @@ void		ft_rra(t_liste *list)
 		tmp->prev = NULL;
 		list->a = tmp;
 	}
+	write(1, "rra\n", 4);
 }
 
 void	ft_sa(t_liste *list)
@@ -69,5 +71,21 @@ void	ft_sa(t_liste *list)
 		tmp->prev = NULL;
 		list->a = tmp;
 	}
+	write(1, "sa\n", 3);
+}
+
+int	ft_check_sorted(t_liste *list)
+{
+	t_elemt *tmp;
+
+	tmp = list->a;
+	while (tmp->next != NULL)
+	{
+		if (tmp->next && tmp->val < tmp->next->val)
+			tmp = tmp->next;
+		else
+			return (0);
+	}
+	return (1);
 }
 
