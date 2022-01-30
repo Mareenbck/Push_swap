@@ -6,14 +6,15 @@
 #    By: mbascuna <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/11 08:26:22 by mbascuna          #+#    #+#              #
-#    Updated: 2022/01/20 11:14:21 by mbascuna         ###   ########.fr        #
+#    Updated: 2022/01/26 09:54:05 by mbascuna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= push_swap
-LIB_DIR		=	libft
+LIB_DIR		=	./libft
+LIBFT		= ./libft/libft.a
 HEADER		=	-I./push_swap.h
-SRCS	= ./push_swap.c ./check.c ./moove.c 
+SRCS	= ./push_swap.c ./check.c ./move_a.c ./sort_a.c ./move_b.c ./sort_b.c
 
 
 OBJS	= ${SRCS:.c=.o}
@@ -29,11 +30,14 @@ all:		${NAME}
 %.o:%.c
 			${CC} ${FLAGS} -c $< -o $@
 
-${NAME}:	${OBJS} ./push_swap.h
+${NAME}:	${OBJS} ${LIBFT}
 			@echo "\033[35m----Compiling libft----"
-			@make -C ${LIB_DIR}
-			@${CC} ${FLAGS} ${HEADER} ${LIB_DIR}/libft.a ${OBJS} -o ${NAME} -fsanitize=address -g3
+			@${CC} ${OBJS} -o ${NAME} ${LIBFT}
+			
+${LIBFT}:	
+			@make -sC libft
 
+			
 %.o:		%.c libft/*.c
 			@${CC} ${CFLAGS} -c $< -o $@
 

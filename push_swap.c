@@ -6,7 +6,7 @@
 /*   By: mbascuna <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 12:26:11 by mbascuna          #+#    #+#             */
-/*   Updated: 2022/01/26 10:17:57 by mbascuna         ###   ########.fr       */
+/*   Updated: 2022/01/30 12:18:32 by marinebas        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,18 @@ void ft_error(char *msg)
 	exit(EXIT_FAILURE);
 }
 
-int	ft_median(t_elemt *elemt, int len)
+int	ft_median(t_elemt *elemt, t_liste *list, int len)
 {
 	int i;
+	int j;
 	int *tab;
 	int median;
-
+	t_elemt	*check;
+	
+	j = 0;
+	check = list->b;
+	if (elemt == check)
+		j = 2;
 	i = 0;
 	tab = malloc(sizeof(int) * len);
 	if (!tab)
@@ -36,8 +42,9 @@ int	ft_median(t_elemt *elemt, int len)
 		elemt = elemt->next;
 	}
 	tab = ft_sort_int_tab(tab, len);
-
-	if (i % 2 == 0)
+	//A CORRIGER !!!!
+//si cest ma stack B mdian
+	if (i % 2 == 0 && j == 2)
 		median = tab[i / 2 - 1];
 	else
 		median = tab[i / 2];
@@ -112,11 +119,11 @@ void	push_swap(t_liste *list)
 
 	len = ft_len_list(list->a);
 	if (ft_check_sorted(list->a))
-		ft_error("Sorted !");
-	if (len == 3)
-		ft_sort_3_a(list);
-	else if (len == 2 && (list->a->val > list->a->next->val))
+		printf("Cest trie");
+	if  (len == 2 && (list->a->val > list->a->next->val))
 		ft_sa(list);
+	else if (len == 3)
+		ft_sort_3_a(list);
 	else
 		ft_sort_a(list, len);
 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   moove.c                                            :+:      :+:    :+:   */
+/*   move_b.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbascuna <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 11:13:35 by mbascuna          #+#    #+#             */
-/*   Updated: 2022/01/26 10:47:11 by mbascuna         ###   ########.fr       */
+/*   Updated: 2022/01/30 11:34:07 by marinebas        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,7 +165,7 @@ void	ft_sb(t_liste *list)
 	printf("\n-------------\n");
 }
 
-void		ft_pa(t_liste *list, int *push)
+void		ft_pa(t_liste *list)
 {
 	t_elemt *elemt = list->a;	
 	printf("\n-----PA-----");
@@ -209,5 +209,4 @@ void		ft_pa(t_liste *list, int *push)
 		elemt = elemt->next;
 	}
 	printf("\n-------------\n");
-	(*push)++;
 }
