@@ -6,7 +6,7 @@
 /*   By: mbascuna <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 10:47:23 by mbascuna          #+#    #+#             */
-/*   Updated: 2022/01/30 13:25:13 by marinebas        ###   ########.fr       */
+/*   Updated: 2022/01/31 21:24:41 by marinebas        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,11 @@ t_liste *ft_petit_tri_a(t_liste *list)
 	if (len >= 2 && list->a->val > list->a->next->val)
 		ft_sa(list);
 	if (len >= 3 && (list->a->next->val > list->a->next->next->val))
-		ft_sort_3_a(list);
+	{
+		ft_ra(list);
+		ft_sa(list);
+		ft_rra(list);
+	}
 	if (len >= 2 && list->a->val > list->a->next->val)
 		ft_sa(list);
 	return (list);
@@ -75,14 +79,16 @@ void ft_sort_a_with_median(t_liste *list, int *push, int len)
 	//int size;
 	int i;
 	t_elemt	*elemt;
+	t_elemt *elemtb;
 
 
 	i = 0;
 	printf(">> TRI MEDIAN A\n");
-	median = ft_median(list->a, list, len);
+	median = ft_median(list->a, 0, len);
 	printf("len A: %d\n", len);
 	printf("median A: %d", median);
 	elemt = list->a;
+	elemtb = list->b;
 	while (i < len)
 	{			
 		//size = ft_len_list(list->a);
@@ -91,12 +97,17 @@ void ft_sort_a_with_median(t_liste *list, int *push, int len)
 		if (elemt->val < median)
 		{
 			ft_pb(list);
+
+
 			(*push)++;
 		}
 		else
 			ft_ra(list);	
 		i++;
 		elemt = list->a;
+		elemtb = list->b;
+		if (elemtb->next != NULL && elemtb->val < elemtb->next->val)
+			ft_sb(list);
 		printf("i : %d \n", i);
 		printf("elemt A: %d\n", elemt->val);	
 		printf("median : %d\n", median);

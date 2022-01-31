@@ -6,7 +6,7 @@
 /*   By: mbascuna <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 10:47:23 by mbascuna          #+#    #+#             */
-/*   Updated: 2022/01/30 13:27:12 by marinebas        ###   ########.fr       */
+/*   Updated: 2022/01/31 21:28:18 by marinebas        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,32 +15,6 @@
 t_liste	*ft_sort_3_b(t_liste *list)
 {
     printf(">> SORT 3 B\n");
-//	int i = 0;
-	
-	// if (ft_check_sorted_reverse(list->b))
-	//  	return (list);
-/*	if (list->b->val > list->b->next->val)
-	{
-		if (list->b->val > list->b->next->next->val)
-			i = 1;
-		ft_rrb(list);
-		if (i)
-			ft_sb(list);
-	}
-	else
-	{
-		if (list->b->val > list->b->next->next->val)
-			ft_sb(list);
-		else
-		{
-			if (list->b->next->val < list->b->next->next->val)
-				i = 1;
-			ft_rb(list);
-			if (i)
-				ft_sb(list);
-		}
-	}
-	*/
 	 t_elemt *last;
      t_elemt *middle;
 	 last = list->b->next->next;
@@ -82,7 +56,11 @@ t_liste *ft_petit_tri_b(t_liste *list)
 	if (len >= 2 && (list->b->val < list->b->next->val))
 		ft_sb(list);
 	if (len >= 3 && (list->b->next->val < list->b->next->next->val))
-		ft_sort_3_b(list);
+	{
+		ft_rb(list);
+		ft_sb(list);
+		ft_rrb(list);
+	}
 	if (len >= 2 && list->b->val < list->b->next->val)
 		ft_sb(list);
 	return (list);
@@ -98,7 +76,7 @@ void	ft_sort_b_with_median(t_liste *list, int *push, int len)
 	i = 0;
 	printf(">> TRI MEDIANE B\n");
 	
-	median = ft_median(list->b, list, len);
+	median = ft_median(list->b, 1, len);
 	printf("len B: %d\n", len);
 	printf("median B: %d\n", median);
 	elemt = list->b;
@@ -111,13 +89,16 @@ void	ft_sort_b_with_median(t_liste *list, int *push, int len)
 	//		ft_sort_3_b(list);
 		if (elemt->val > median)
 		{
+
+
 			ft_pa(list);
 			(*push)++;
 		}
 		else
 			ft_rb(list);
 		i++;
-		elemt = list->b;	
+		elemt = list->b;
+
 		printf("elemt B: %d\n", elemt->val);		
 	}
 }
@@ -137,7 +118,10 @@ t_elemt	*ft_sort_b(t_liste *list, int len)
 	// 	return (list->b);
 	if (len <= 3)
 	{
-	 	ft_petit_tri_b(list);
+	 	if (size == 3)
+			ft_sort_3_b(list);
+		else
+			ft_petit_tri_b(list);
 		return (list->b);
 	}
 

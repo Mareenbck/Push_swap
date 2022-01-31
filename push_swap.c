@@ -6,7 +6,7 @@
 /*   By: mbascuna <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 12:26:11 by mbascuna          #+#    #+#             */
-/*   Updated: 2022/01/30 12:18:32 by marinebas        ###   ########.fr       */
+/*   Updated: 2022/01/31 20:03:11 by marinebas        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,12 @@ void ft_error(char *msg)
 	exit(EXIT_FAILURE);
 }
 
-int	ft_median(t_elemt *elemt, t_liste *list, int len)
+int	ft_median(t_elemt *elemt, int list, int len)
 {
 	int i;
-	int j;
 	int *tab;
 	int median;
-	t_elemt	*check;
 	
-	j = 0;
-	check = list->b;
-	if (elemt == check)
-		j = 2;
 	i = 0;
 	tab = malloc(sizeof(int) * len);
 	if (!tab)
@@ -44,7 +38,7 @@ int	ft_median(t_elemt *elemt, t_liste *list, int len)
 	tab = ft_sort_int_tab(tab, len);
 	//A CORRIGER !!!!
 //si cest ma stack B mdian
-	if (i % 2 == 0 && j == 2)
+	if (i % 2 == 0 && list == 1)
 		median = tab[i / 2 - 1];
 	else
 		median = tab[i / 2];

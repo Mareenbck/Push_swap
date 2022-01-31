@@ -6,7 +6,7 @@
 /*   By: mbascuna <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 12:30:05 by mbascuna          #+#    #+#             */
-/*   Updated: 2022/01/30 12:15:44 by marinebas        ###   ########.fr       */
+/*   Updated: 2022/01/31 20:03:35 by marinebas        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	ft_pa(t_liste *list);
 
 
 
-int		ft_median(t_elemt *elemt, t_liste *list, int ac);
+int		ft_median(t_elemt *elemt, int list, int ac);
 t_liste	*ft_petit_tri_a(t_liste *list);
 t_liste	*ft_petit_tri_b(t_liste *list);
 
