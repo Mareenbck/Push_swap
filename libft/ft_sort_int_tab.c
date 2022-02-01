@@ -35,10 +35,9 @@ int	*ft_sort_int_tab(int *tab, int size)
 		{
 			if (tab[i] < tab[j])
 				ft_swap(&tab[j], &tab[i]);
-
 			j++;
 		}
 		i++;
 	}
-	return (tab);
+  return (tab);
 }

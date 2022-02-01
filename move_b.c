@@ -15,22 +15,6 @@
 
 void		ft_rb(t_liste *list)
 {
-	t_elemt *elemt = list->a;	
-	printf("\n----RB-----");
-	printf("\na : ");
-	while (elemt != NULL)
-	{
-		printf("%d ", elemt->val);
-		elemt = elemt->next;
-	}
-	t_elemt *elemtb = list->b;
-	printf("\nb : ");
-	while (elemtb != NULL)
-	{
-		printf("%d ", elemtb->val);
-		elemtb = elemtb->next;
-	}
-//***************CODE ICI*******************	
 	t_elemt	*last;
 	t_elemt *top;
 
@@ -46,43 +30,11 @@ void		ft_rb(t_liste *list)
 		list->b = top;
 	}
 	//write(1, "rb\n", 3);
-//******************************************
-	elemt = list->a;
-	printf("\n-----RB-----");
-	printf("\na : ");
-	while (elemt != NULL)
-	{
-		printf("%d ", elemt->val);
-		elemt = elemt->next;
-	}
-	elemt = list->b;
-	printf("\nb : ");
-	while (elemt != NULL)
-	{
-		printf("%d ", elemt->val);
-		elemt = elemt->next;
-	}
-	printf("\n-------------\n");
+  printf("\033[0;31m . RB . \033[0;m\n");
 }
 
 void		ft_rrb(t_liste *list)
 {
-	t_elemt *elemt = list->a;	
-	printf("\n----RRB-----");
-	printf("\na : ");
-	while (elemt != NULL)
-	{
-		printf("%d ", elemt->val);
-		elemt = elemt->next;
-	}
-	t_elemt *elemtb = list->b;
-	printf("\nb : ");
-	while (elemtb != NULL)
-	{
-		printf("%d ", elemtb->val);
-		elemtb = elemtb->next;
-	}
-//***************CODE ICI*******************		
 	t_elemt	*top;
 	t_elemt *tmp;
 
@@ -98,43 +50,11 @@ void		ft_rrb(t_liste *list)
 		list->b = tmp;
 	}
 //	write(1, "rrb\n", 4);
-//******************************************
-	elemt = list->a;
-	printf("\n----RRB-----");
-	printf("\na : ");
-	while (elemt != NULL)
-	{
-		printf("%d ", elemt->val);
-		elemt = elemt->next;
-	}
-	elemt = list->b;
-	printf("\nb : ");
-	while (elemt != NULL)
-	{
-		printf("%d ", elemt->val);
-		elemt = elemt->next;
-	}
-	printf("\n-------------\n");
+  printf("\033[0;31m . RRB . \033[0;m\n");
 }
 
 void	ft_sb(t_liste *list)
 {
-	t_elemt *elemt = list->a;	
-	printf("\n-----SB-----");
-	printf("\na : ");
-	while (elemt != NULL)
-	{
-		printf("%d ", elemt->val);
-		elemt = elemt->next;
-	}
-	t_elemt *elemtb = list->b;
-	printf("\nb : ");
-	while (elemtb != NULL)
-	{
-		printf("%d ", elemtb->val);
-		elemtb = elemtb->next;
-	}
-//***************CODE ICI*******************	
 	t_elemt *tmp;
 
 	if (list->b != NULL)
@@ -145,44 +65,12 @@ void	ft_sb(t_liste *list)
 		tmp->prev = NULL;
 		list->b = tmp;
 	}
-//******************************************
 	//write(1, "sb\n", 3);
-	elemt = list->a;
-	printf("\n-----SB-----");
-	printf("\na : ");
-	while (elemt != NULL)
-	{
-		printf("%d ", elemt->val);
-		elemt = elemt->next;
-	}
-	elemt = list->b;
-	printf("\nb : ");
-	while (elemt != NULL)
-	{
-		printf("%d ", elemt->val);
-		elemt = elemt->next;
-	}
-	printf("\n-------------\n");
+  printf("\033[0;33m . SB . \033[0;m\n");
 }
 
 void		ft_pa(t_liste *list)
 {
-	t_elemt *elemt = list->a;	
-	printf("\n-----PA-----");
-	printf("\na : ");
-	while (elemt != NULL)
-	{
-		printf("%d ", elemt->val);
-		elemt = elemt->next;
-	}
-	t_elemt *elemtb = list->b;
-	printf("\nb : ");
-	while (elemtb != NULL)
-	{
-		printf("%d ", elemtb->val);
-		elemtb = elemtb->next;
-	}
-//***************CODE ICI*******************
 	t_elemt *tmp;
 	if (list->b)
 	{
@@ -191,22 +79,6 @@ void		ft_pa(t_liste *list)
 		list->a = list->b;
 		list->b = tmp;
 	}
-//******************************************
 	//write(1, "pa\n", 3);
-	elemt = list->a;
-	printf("\n-----PA-----");
-	printf("\na : ");
-	while (elemt != NULL)
-	{
-		printf("%d ", elemt->val);
-		elemt = elemt->next;
-	}
-	elemt = list->b;
-	printf("\nb : ");
-	while (elemt != NULL)
-	{
-		printf("%d ", elemt->val);
-		elemt = elemt->next;
-	}
-	printf("\n-------------\n");
+  printf("\033[0;32m . PA . \033[0;m\n");
 }

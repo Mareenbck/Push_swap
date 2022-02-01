@@ -6,7 +6,7 @@
 /*   By: mbascuna <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 10:47:23 by mbascuna          #+#    #+#             */
-/*   Updated: 2022/01/31 21:24:41 by marinebas        ###   ########.fr       */
+/*   Updated: 2022/02/01 10:27:19 by marinebas        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,153 +14,210 @@
 
 t_liste	*ft_sort_3_a(t_liste *list)
 {
-	printf(">> SORT 3 A\n");
-	t_elemt *last;
-	t_elemt *middle;
+	// printf(">>> SORT 3 A <<<\n");
+	t_elemt *third;
+	t_elemt *second;
+  t_elemt *first;
 
-	last = ft_lst_last(list->a);
-	middle = list->a->next;
-	printf("last : %d\n", last->val);
-	printf("middle : %d\n", middle->val);
-	printf("top : %d\n", list->a->val);
-	if(list->a->val > middle->val
-			&& middle->val < last->val
-			&& last->val < list->a->val)
+	first = list->a;
+  third = list->a->next->next;
+	second = list->a->next;
+	if(first->val > second->val
+			&& second->val < third->val
+			&& third->val < first->val)
 		ft_ra(list);
-	else 
-	{	
-		if (list->a->val < middle->val 
-				&& middle->val > last->val
-				&& last->val < list->a->val)
+	else
+	{
+		if (first->val < second->val
+				&& second->val > third->val
+				&& third->val < first->val)
 			ft_rra(list);
-		else 
+		else
 			ft_sa(list);
 	}
-
-	
-	middle = list->a->next;
-	last = ft_lst_last(list->a);
-	printf("last : %d\n", last->val);
-	printf("middle : %d\n", middle->val);
-	printf("top : %d\n", list->a->val);
-	if (list->a->val < middle->val 
-			&& middle->val > last->val
-			&& last->val < list->a->val)
+  first = list->a;
+  second = list->a->next;
+	third = list->a->next->next;
+	if (first->val < second->val
+			&& second->val > third->val
+			&& third->val < first->val)
 		ft_rra(list);
-	else if (list->a->val > middle->val
-			&& middle->val < last->val
-			&& last->val < list->a->val)
+	else if (first->val > second->val
+			&& second->val < third->val
+			&& third->val < first->val)
 		ft_ra(list);
-	return (list);
+  //***************AFFICHAGE*************************
+  // t_elemt *elemt = list->a;
+  // t_elemt *elemtb = list->b;
+  // printf("-----Sort 3 A-----");
+  // printf("\n-a-    -b-");
+  // printf("\n _      _\n");
+  // while (elemt != NULL || elemtb != NULL)
+  // {
+  //   if (elemtb == NULL)
+  //   {
+  //     printf(" %d      \n", elemt->val);
+  //     elemt = elemt->next;
+  //   }
+  //   else if (elemt == NULL)
+  //   {
+  //     printf("        %d\n", elemtb->val);
+  //     elemtb = elemtb->next;
+  //   }
+  //   else
+  //   {
+  //     printf(" %d     %d\n", elemt->val, elemtb->val);
+  //     elemtb = elemtb->next;
+  //     elemt = elemt->next;
+  //   }
+  // }
+  //*****************************************************
+  return (list);
 }
 
 t_liste *ft_petit_tri_a(t_liste *list)
 {
-	int len;
+	int size;
 
-	printf("On rentre dans petit_tri A\n");
-	len = ft_len_list(list->a);
-	if (len >= 2 && list->a->val > list->a->next->val)
+	// printf(">>> PETIT TRI A <<<\n");
+	size = ft_len_list(list->a);
+	if (list->a->val > list->a->next->val)
 		ft_sa(list);
-	if (len >= 3 && (list->a->next->val > list->a->next->next->val))
+	if (size >= 3 && (list->a->next->val > list->a->next->next->val))
 	{
 		ft_ra(list);
 		ft_sa(list);
 		ft_rra(list);
 	}
-	if (len >= 2 && list->a->val > list->a->next->val)
+	if (list->a->val > list->a->next->val)
 		ft_sa(list);
-	return (list);
+  //***************AFFICHAGE*************************
+  // t_elemt *elemt = list->a;
+  // t_elemt *elemtb = list->b;
+  // printf("-----Petit Tri A-----");
+  // printf("\n-a-    -b-");
+  // printf("\n _      _\n");
+  // while (elemt != NULL || elemtb != NULL)
+  // {
+  //   if (elemtb == NULL)
+  //   {
+  //     printf(" %d      \n", elemt->val);
+  //     elemt = elemt->next;
+  //   }
+  //   else if (elemt == NULL)
+  //   {
+  //     printf("        %d\n", elemtb->val);
+  //     elemtb = elemtb->next;
+  //   }
+  //   else
+  //   {
+  //     printf(" %d     %d\n", elemt->val, elemtb->val);
+  //     elemtb = elemtb->next;
+  //     elemt = elemt->next;
+  //   }
+  // }
+  //*****************************************************
+  return (list);
 }
 
-void ft_sort_a_with_median(t_liste *list, int *push, int len)
+int under_median(t_liste *list, int n, int median)
+{
+  int i;
+  t_elemt *tmp;
+
+  i = 0;
+  tmp = list->a;
+  while (i < n)
+  {
+    if (tmp->val < median)
+      return (1);
+    i++;
+    tmp = tmp->next;
+  }
+  return (0);
+}
+
+void ft_sort_a_with_median(t_liste *list, int *push, int *rotate, int len)
 {
 	int median;
-	//int size;
 	int i;
 	t_elemt	*elemt;
 	t_elemt *elemtb;
 
-
 	i = 0;
-	printf(">> TRI MEDIAN A\n");
+	// printf(">>> TRI MEDIAN A <<<\n");
 	median = ft_median(list->a, 0, len);
-	printf("len A: %d\n", len);
-	printf("median A: %d", median);
 	elemt = list->a;
-	elemtb = list->b;
-	while (i < len)
-	{			
-		//size = ft_len_list(list->a);
-		//if (size == 3 && !ft_check_sorted(list->a))
-		//	ft_sort_3_a(list);
+	while (i < len && under_median(list, len - i, median))
+	{
 		if (elemt->val < median)
 		{
 			ft_pb(list);
-
-
 			(*push)++;
 		}
 		else
-			ft_ra(list);	
+    {
+			ft_ra(list);
+      (*rotate)++;
+    }
 		i++;
 		elemt = list->a;
-		elemtb = list->b;
-		if (elemtb->next != NULL && elemtb->val < elemtb->next->val)
-			ft_sb(list);
-		printf("i : %d \n", i);
-		printf("elemt A: %d\n", elemt->val);	
-		printf("median : %d\n", median);
-		printf("push = %d\n", *push);
-	//	printf("size = %d\n", size);
-		printf("-------------\n");
-
-	}		
+	}
+  elemt = list->a;
+  elemtb = list->b;
+  // printf("\n-----Tri Mediane A-----");
+  // printf("\n-a-    -b-");
+  // printf("\n _      _\n");
+  // while (elemt != NULL || elemtb != NULL)
+  // {
+  //   if (elemtb == NULL)
+  //   {
+  //     printf(" %d      \n", elemt->val);
+  //     elemt = elemt->next;
+  //   }
+  //   else if (elemt == NULL)
+  //   {
+  //     printf("        %d\n", elemtb->val);
+  //     elemtb = elemtb->next;
+  //   }
+  //   else
+  //   {
+  //     printf(" %d     %d\n", elemt->val, elemtb->val);
+  //     elemtb = elemtb->next;
+  //     elemt = elemt->next;
+  //   }
+  // }
+  // printf("-------------\n");
+  // printf("push = %d\n", *push);
 }
 
 t_elemt	*ft_sort_a(t_liste *list, int len)
 {
 	int push;
-	// int pa;
+  int rotate;
+  int size;
 
-	// pa = 0;
 	push = 0;
-	
-	printf("len dans sort A : %d\n", len);
-	printf("SORT A: %d\n", ft_check_sorted(list->a));
+  rotate = 0;
+  size = ft_len_list(list->a);
+	// printf(">>> SORT A <<<\n");
 	if ((ft_check_sorted(list->a) && list->a))
 		return (list->a);
 	if (len <= 3)
 	{
-		if (len == 3)
+		if (size == 3)
 			ft_sort_3_a(list);
-		else 
+		else
 			ft_petit_tri_a(list);
 		return (list->a);
 	}
-	
-	ft_sort_a_with_median(list, &push, len);
-	
-	// {
-	// 	ft_petit_tri_a(list);
-	// 	return(list->a);
-	// }
-	// ft_sort_a_with_median(list, &push, len);
-	// printf("sortie du tri A avec mediane\n");
-	// list->a = ft_sort_a(list, (len - push));
-	// list->b = ft_sort_b(list, push);
-	
-	printf("sortie du tri A avec mediane\n");
-	list->a = ft_sort_a(list, (len - push));
+	ft_sort_a_with_median(list, &push, &rotate, len);
+  list->a = ft_sort_a(list, (len - push));
 	list->b = ft_sort_b(list, push);
-	//if (ft_check_sorted_reverse(list->b))
-//  {
 	while (list->b && push)
 	{
 		ft_pa(list);
 		push--;
-		printf("push : %d\n", push);	
 	}
-//	}
-	return (list->a);	
+  return (list->a);
 }

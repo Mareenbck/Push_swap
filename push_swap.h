@@ -74,8 +74,8 @@ int	ft_len_list(t_elemt *elemt);
 t_elemt	*ft_sort_a(t_liste *list, int len);
 t_elemt	*ft_sort_b(t_liste *list, int len);
 
-void	ft_sort_b_with_median(t_liste *list, int *push, int len);
-void ft_sort_a_with_median(t_liste *list, int *push, int len);
+void	ft_sort_b_with_median(t_liste *list, int *push, int *rotate, int len);
+void ft_sort_a_with_median(t_liste *list, int *push, int *rotate, int len);
 t_liste	*ft_sort_3_a(t_liste *list);
 t_liste	*ft_sort_3_b(t_liste *list);
 
