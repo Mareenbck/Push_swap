@@ -15,8 +15,9 @@
 
 void ft_error(char *msg)
 {
-	perror(msg);
-	exit(EXIT_FAILURE);
+	// perror(msg);
+  ft_putstr_fd(msg, 2);
+  exit(1);
 }
 
 int	ft_median(t_elemt *elemt, int list, int len)
@@ -93,8 +94,8 @@ void	push_swap(t_liste *list)
 
 	len = ft_len_list(list->a);
 	if (ft_check_sorted(list->a))
-		printf("Cest trie");
-	if  (len == 2 && (list->a->val > list->a->next->val))
+    ft_error("");
+  if  (len == 2 && (list->a->val > list->a->next->val))
 		ft_sa(list);
 	else if (len == 3)
 		ft_sort_3_a(list);
@@ -103,13 +104,13 @@ void	push_swap(t_liste *list)
 
 	//PRINT FINAL
 
-	// t_elemt *elemt = list->a;
-	// printf("-----FINAL-----\n");
-	// while (elemt != NULL)
-	// {
-	// 	printf("a : %d\n", elemt->val);
-	// 	elemt = elemt->next;
-	// }
+	t_elemt *elemt = list->a;
+	printf("-----FINAL-----\n");
+	while (elemt != NULL)
+	{
+		printf("a : %d\n", elemt->val);
+		elemt = elemt->next;
+	}
 
 }
 
@@ -117,17 +118,34 @@ int main(int ac, char **av)
 {
 	int i;
 	t_liste	*list;
+  char **tab;
 
-	i = 1;
+
 	if (ac < 2)
-    ft_error("Error\n");
-  ft_check_args(av);
-	list = ft_list_init();
-	while (av[i])
-	{
-		ft_add_back(list, ft_atoi(av[i]));
-		i++;
-	}
+    ft_error("");
+  if (ac == 2)
+  {
+    tab = ft_split(av[1], ' ');
+    ft_check_args(tab);
+    list = ft_list_init();
+    i = 0;
+    while (tab[i])
+    {
+      ft_add_back(list, ft_atoi(tab[i]));
+      i++;
+    }
+  }
+  else
+  {
+    ft_check_args(av);
+	  list = ft_list_init();
+    i = 1;
+    while (av[i])
+	  {
+		  ft_add_back(list, ft_atoi(av[i]));
+		  i++;
+	  }
+  }
 	// t_elemt	*elemt;
 	// elemt = list->a;
 	// printf("-----BEGIN-----\n");

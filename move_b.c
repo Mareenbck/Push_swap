@@ -29,8 +29,8 @@ void		ft_rb(t_liste *list)
 		list->b->next = last;
 		list->b = top;
 	}
-	//write(1, "rb\n", 3);
-  printf("\033[0;31m . RB . \033[0;m\n");
+	write(1, "rb\n", 3);
+  // printf("\033[0;31m . RB . \033[0;m\n");
 }
 
 void		ft_rrb(t_liste *list)
@@ -49,8 +49,8 @@ void		ft_rrb(t_liste *list)
 		tmp->prev = NULL;
 		list->b = tmp;
 	}
-//	write(1, "rrb\n", 4);
-  printf("\033[0;31m . RRB . \033[0;m\n");
+	write(1, "rrb\n", 4);
+  // printf("\033[0;31m . RRB . \033[0;m\n");
 }
 
 void	ft_sb(t_liste *list)
@@ -65,8 +65,8 @@ void	ft_sb(t_liste *list)
 		tmp->prev = NULL;
 		list->b = tmp;
 	}
-	//write(1, "sb\n", 3);
-  printf("\033[0;33m . SB . \033[0;m\n");
+	write(1, "sb\n", 3);
+  // printf("\033[0;33m . SB . \033[0;m\n");
 }
 
 void		ft_pa(t_liste *list)
@@ -79,6 +79,6 @@ void		ft_pa(t_liste *list)
 		list->a = list->b;
 		list->b = tmp;
 	}
-	//write(1, "pa\n", 3);
-  printf("\033[0;32m . PA . \033[0;m\n");
+	write(1, "pa\n", 3);
+  // printf("\033[0;32m . PA . \033[0;m\n");
 }

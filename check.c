@@ -23,7 +23,7 @@ int ft_check_digit(char *str)
  		if ((!ft_isdigit(str[i]) && str[i] != '-' && str[i] != '+')
  				|| (str[i] == '-' && !ft_isdigit(str[i+1]))
  				|| (str[i] == '+' && !ft_isdigit(str[i+1])))
- 			ft_error("must be a digit");
+ 			ft_error("Error\n");
  		i++;
  	}
  	return (1);
@@ -42,7 +42,7 @@ int ft_check_args(char **av)
 		{
 	//		if (!ft_strncmp(av[i], av[j], ft_strlen(av[j])))
 			if (ft_atoi(av[i]) == ft_atoi(av[j]))
-				ft_error("Error similar number");
+				ft_error("Error\n");
 			j++;
 		}
 		ft_check_digit(av[i]);
@@ -74,12 +74,4 @@ int	ft_check_sorted_reverse(t_elemt *elemt)
 			return (0);
 	}
 	return (1);
-}
-
-int	ft_check_sorted3_reverse(t_elemt *elemt)
-{
-	if ((elemt->val > elemt->next->val) 
-		&& (elemt->next->val > elemt->next->next->val))
-		return (1);
-	return (0);
 }
