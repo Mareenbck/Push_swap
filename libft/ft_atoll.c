@@ -1,43 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sort_int_tab.c                                  :+:      :+:    :+:   */
+/*   ft_atoll.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbascuna <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/09 16:48:16 by mbascuna          #+#    #+#             */
-/*   Updated: 2022/02/05 11:25:59 by mbascuna         ###   ########.fr       */
+/*   Created: 2022/02/07 09:28:12 by mbascuna          #+#    #+#             */
+/*   Updated: 2022/02/07 10:26:20 by mbascuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <unistd.h>
+#include "libft.h"
 
-void	ft_swap(int *a, int *b)
+long long	ft_atoll(const char *str)
 {
-	int		tmp;
-
-	tmp = *a;
-	*a = *b;
-	*b = tmp;
-}
-
-int	*ft_sort_int_tab(int *tab, int size)
-{
-	int		i;
-	int		j;
+	int			i;
+	long long	result;
+	int			neg;
 
 	i = 0;
-	while (i < size)
+	neg = 1;
+	while (str[i] == ' ' || (str[i] >= '\t' && str[i] <= '\r'))
+		i++;
+	if (str[i] == '+' || str[i] == '-')
 	{
-		j = 0;
-		while (j < size - 1)
-		{
-			if (tab[i] < tab[j])
-				ft_swap(&tab[j], &tab[i]);
-			j++;
-		}
+		if (str[i] == '-')
+			neg *= -1;
 		i++;
 	}
-	return (tab);
+	result = 0;
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		result *= 10;
+		result += str[i] - '0';
+		i++;
+	}
+	return (result * neg);
 }

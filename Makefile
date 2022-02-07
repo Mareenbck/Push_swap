@@ -6,7 +6,7 @@
 #    By: mbascuna <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/11 08:26:22 by mbascuna          #+#    #+#              #
-#    Updated: 2022/01/26 09:54:05 by mbascuna         ###   ########.fr        #
+#    Updated: 2022/02/05 13:43:09 by mbascuna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,9 @@ NAME	= push_swap
 LIB_DIR		=	./libft
 LIBFT		= ./libft/libft.a
 HEADER		=	-I./push_swap.h
-SRCS	= ./push_swap.c ./check.c ./move_a.c ./sort_a.c ./move_b.c ./sort_b.c
+SRCS		= ./push_swap.c ./check.c ./move_a.c \
+			./sort_a.c ./move_b.c ./sort_b.c \
+			./call_a.c ./call_b.c ./utils.c
 
 
 OBJS	= ${SRCS:.c=.o}
