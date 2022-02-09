@@ -6,7 +6,7 @@
 /*   By: mbascuna <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 11:43:58 by mbascuna          #+#    #+#             */
-/*   Updated: 2022/01/12 16:30:24 by mbascuna         ###   ########.fr       */
+/*   Updated: 2022/02/09 11:37:34 by mbascuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ char	**ft_split(char const *s, char c)
 	char	**result;
 	char	**split;
 
+	if (s[0] == '\0')
+		return (NULL);
 	words = count_words(s, c);
 	result = (char **)malloc(sizeof(char *) * (words + 1));
 	if (!result)

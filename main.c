@@ -1,41 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbascuna <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/29 13:16:53 by mbascuna          #+#    #+#             */
-/*   Updated: 2022/02/08 18:03:43 by mbascuna         ###   ########.fr       */
+/*   Created: 2022/02/09 15:54:18 by mbascuna          #+#    #+#             */
+/*   Updated: 2022/02/09 15:56:48 by mbascuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <limits.h>
-#include <stdio.h>
+#include "push_swap.h"
 
-int	ft_atoi(const char *str)
+int	main(int ac, char **av)
 {
-	int	i;
-	int	result;
-	int	neg;
+	t_liste	*list;
+	char	**tab;
 
-	i = 0;
-	neg = 1;
-	while (str[i] == ' ' || (str[i] >= '\t' && str[i] <= '\r'))
-		i++;
-	if (str[i] == '+' || str[i] == '-')
+	if (ac < 2)
+		ft_error("");
+	if (ac == 2)
 	{
-		if (str[i] == '-')
-			neg *= -1;
-		i++;
+		if (av[1][0] == '\0')
+			ft_error("");
+		tab = ft_split(av[1], ' ');
+		list = ft_init_push_swap(tab, 0, 1);
+		ft_free_tab(tab);
 	}
-	result = 0;
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		result *= 10;
-		result += str[i] - '0';
-		i++;
-	}
-	return (result * neg);
+	else
+		list = ft_init_push_swap(av, 1, 0);
+	push_swap(list);
+	free(list);
+	return (0);
 }

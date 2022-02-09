@@ -6,7 +6,7 @@
 /*   By: mbascuna <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 11:13:35 by mbascuna          #+#    #+#             */
-/*   Updated: 2022/02/07 11:12:50 by mbascuna         ###   ########.fr       */
+/*   Updated: 2022/02/05 13:53:53 by mbascuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_rb(t_liste *list)
 		list->b->next = last;
 		list->b = top;
 	}
-	printf("\033[0;31m . RB . \033[0;m\n");
+	write(1, "rb\n", 3);
 }
 
 void	ft_rrb(t_liste *list)
@@ -45,7 +45,7 @@ void	ft_rrb(t_liste *list)
 		tmp->next = top;
 		list->b = tmp;
 	}
-	printf("\033[0;31m . RRB . \033[0;m\n");
+	write(1, "rrb\n", 4);
 }
 
 void	ft_sb(t_liste *list)
@@ -59,7 +59,7 @@ void	ft_sb(t_liste *list)
 		tmp->next = list->b;
 		list->b = tmp;
 	}
-	printf("\033[0;33m . SB . \033[0;m\n");
+	write(1, "sb\n", 3);
 }
 
 void	ft_pa(t_liste *list)
@@ -73,5 +73,5 @@ void	ft_pa(t_liste *list)
 		list->a = list->b;
 		list->b = tmp;
 	}
-	printf("\033[0;32m . PA . \033[0;m\n");
+	write(1, "pa\n", 3);
 }

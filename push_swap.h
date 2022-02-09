@@ -6,7 +6,7 @@
 /*   By: mbascuna <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 12:30:05 by mbascuna          #+#    #+#             */
-/*   Updated: 2022/02/05 14:20:42 by mbascuna         ###   ########.fr       */
+/*   Updated: 2022/02/09 15:59:19 by mbascuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	ft_lstdel(t_elemt *elemt);
 /*******_check_*******/
 int		ft_check_digit(char *str);
 int		ft_check_overflow(char *av);
-int		ft_check_args(char **av);
+int		ft_check_args(char **av, int i, int tab);
 int		ft_check_sorted(t_elemt *elemt);
 int		ft_check_sorted_reverse(t_elemt *elemt);
 
@@ -83,7 +83,8 @@ void	ft_pb(t_liste *list);
 /*******_push_swap_*******/
 t_liste	*ft_list_init(void);
 void	ft_add_back(t_liste *list, int val);
-t_liste	*ft_init_push_swap(char **av, int i);
+t_liste	*ft_init_push_swap(char **av, int i, int tab);
 void	push_swap(t_liste *list);
+void	ft_error_tab(char **av, int tab);
 
 #endif

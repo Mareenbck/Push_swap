@@ -6,11 +6,18 @@
 /*   By: mbascuna <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 12:26:11 by mbascuna          #+#    #+#             */
-/*   Updated: 2022/02/05 14:08:57 by mbascuna         ###   ########.fr       */
+/*   Updated: 2022/02/09 15:56:57 by mbascuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	ft_error_tab(char **av, int tab)
+{
+	if (tab)
+		ft_free_tab(av);
+	ft_error("Error\n");
+}
 
 t_liste	*ft_list_init(void)
 {
@@ -54,7 +61,11 @@ void	push_swap(t_liste *list)
 
 	len = ft_len_list(list->a);
 	if (ft_check_sorted(list->a))
+	{
+		ft_lstdel(list->a);
+		free(list);
 		ft_error("");
+	}
 	if (len == 2 && (list->a->val > list->a->next->val))
 		ft_sa(list);
 	else if (len == 3)
@@ -65,11 +76,11 @@ void	push_swap(t_liste *list)
 	ft_lstdel(list->b);
 }
 
-t_liste	*ft_init_push_swap(char **av, int i)
+t_liste	*ft_init_push_swap(char **av, int i, int tab)
 {
 	t_liste	*list;
 
-	ft_check_args(av);
+	ft_check_args(av, i, tab);
 	list = ft_list_init();
 	while (av[i])
 	{
@@ -77,24 +88,4 @@ t_liste	*ft_init_push_swap(char **av, int i)
 		i++;
 	}
 	return (list);
-}
-
-int	main(int ac, char **av)
-{
-	t_liste	*list;
-	char	**tab;
-
-	if (ac < 2)
-		ft_error("");
-	if (ac == 2)
-	{
-		tab = ft_split(av[1], ' ');
-		list = ft_init_push_swap(tab, 0);
-		ft_free_tab(tab);
-	}
-	else
-		list = ft_init_push_swap(av, 1);
-	push_swap(list);
-	free(list);
-	return (0);
 }

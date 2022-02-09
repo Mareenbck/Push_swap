@@ -6,7 +6,7 @@
 /*   By: mbascuna <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 13:32:14 by mbascuna          #+#    #+#             */
-/*   Updated: 2022/02/05 13:40:32 by mbascuna         ###   ########.fr       */
+/*   Updated: 2022/02/09 10:52:09 by mbascuna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	**ft_free_tab(char **tab)
 	{
 		free(tab[i]);
 		tab[i] = NULL;
+		i++;
 	}
 	free(tab);
 	return (NULL);
