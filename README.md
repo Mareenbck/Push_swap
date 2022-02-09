@@ -14,3 +14,11 @@ Le premier paramètre est au sommet de la pile. Le but est de trier la pile avec
 > **rra** : le dernier élément de a devient le premier.  
 > **rrb** : le dernier élément de b devient le premier.  
 > **rrr** : rra et rrb en même temps.  
+
+###  Fonctions autorisées
+
+```write```  
+```read```  
+```malloc```  
+```free```  
+```error```  
