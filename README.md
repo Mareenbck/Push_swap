@@ -1,7 +1,10 @@
 # Push_swap
 
-Vous devez faire un programme qui prend en paramètre la pile a sous la forme d’une liste de nombres.  
-Le premier paramètre est au sommet de la pile. Le but est de trier la pile avec le moins d’opérations possibles, avec comme opération :
+Faire un programme composé de 2 listes nommées **a** et **b**.  
+Ce programme prendra en paramètre la liste **a** sous la forme d’une liste de nombres négatifs et/ou positifs, qui ne peuvent pas être dupliqués, et en quantité aléatoire.  
+La liste **b** est vide. 
+
+Le but est de trier la pile avec le moins d’opérations possibles, avec comme opération :
 
 > **sa** : swap a - intervertit les 2 premiers éléments au sommet de la pile a.  
 > **sb** : swap b - intervertit les 2 premiers éléments au sommet de la pile b.  
